@@ -2,35 +2,35 @@
 %------------------------------------------------------------------------
 %
 %  Universidade Federal do Rio Grande do Sul
-%  Instituto de Inform·tica TeÛrica
-%  Bacharelado em CiÍncias da ComputaÁ„o
+%  Instituto de Inform√°tica Te√≥rica
+%  Bacharelado em Ci√™ncias da Computa√ß√£o
 %  Aluno: Emiliano Gomes Padilha
 %
-%  Projeto de GraduaÁ„o			Semestre 93/2
-%  TÌtulo: ConjugaÁ„o e ComposiÁ„o Verbal da LÌngua Portuguesa
-%  ¡rea: InteligÍncia Artificial
-%  Campo: Processamento de LÌngua Natural
+%  Projeto de Gradua√ß√£o			Semestre 93/2
+%  T√≠tulo: Conjuga√ß√£o e Composi√ß√£o Verbal da L√≠ngua Portuguesa
+%  √Årea: Intelig√™ncia Artificial
+%  Campo: Processamento de L√≠ngua Natural
 %  Orientadora: Prof. Rosa Maria Viccari
 %
-%  CoVer - ConjugaÁ„o e ComposiÁ„o Verbal da LÌngua Portuguesa
+%  CoVer - Conjuga√ß√£o e Composi√ß√£o Verbal da L√≠ngua Portuguesa
 %------------------------------------------------------------------------
 % Nota: este arquivo possui caracteres acentuados da tabela de caracteres
-% do SunOS. … importante que os acentos sejam visÌveis, pois o programa de
+% do SunOS. √â importante que os acentos sejam vis√≠veis, pois o programa de
 % verbos gera palavras portuguesas (naturalmente) acentuadas. Corrija
-% atravÈs de um editor de textos (recurso de busca-e-troca) com os
+% atrav√©s de um editor de textos (recurso de busca-e-troca) com os
 % caracteres da tabela do seu programa/sistema operacional.
-% Os caracteres acentuados utilizados aqui s„o:
-%            ·  -  a com acento agudo
-%            È  -  e com acento agudo
-%            Ì  -  i com acento agudo
-%            Û  -  o com acento agudo
-%            ˙  -  u com acento agudo
-%            „  -  a com til
-%            ı  -  o com til
-%            Í  -  e com acento circunflexo
-%            Á  -  c cedilha
-%            ¡  -  A com acento agudo
-%            …  -  E com acento agudo
+% Os caracteres acentuados utilizados aqui s√£o:
+%            √°  -  a com acento agudo
+%            √©  -  e com acento agudo
+%            √≠  -  i com acento agudo
+%            √≥  -  o com acento agudo
+%            √∫  -  u com acento agudo
+%            √£  -  a com til
+%            √µ  -  o com til
+%            √™  -  e com acento circunflexo
+%            √ß  -  c cedilha
+%            √Å  -  A com acento agudo
+%            √â  -  E com acento agudo
 %--------------------------------------------------------------------------
 
 
@@ -41,32 +41,32 @@ inverte([X|L1],L2,L3):- inverte(L1,[X|L2],L3).
 inverte([],L,L).
 
 %------------------------------------------------------------------------
-% verbo(): mostra conjugaÁıes de verbos, locuÁıes, c/ pronomes ·tonos, etc.
+% verbo(): mostra conjuga√ß√µes de verbos, locu√ß√µes, c/ pronomes √°tonos, etc.
 
 pronome(0,_+s+1,"(eu)    ").
 pronome(_,_+s+2,"(tu)    ").
 pronome(0,m+s+3,"(ele)   ").
 pronome(0,f+s+3,"(ela)   ").
-pronome(1,_+s+3,"(vocÍ)  ").
-pronome(_,_+p+1,"(nÛs)   ").
-pronome(_,_+p+2,"(vÛs)   ").
+pronome(1,_+s+3,"(voc√™)  ").
+pronome(_,_+p+1,"(n√≥s)   ").
+pronome(_,_+p+2,"(v√≥s)   ").
 pronome(0,m+p+3,"(eles)  ").
 pronome(0,f+p+3,"(elas)  ").
-pronome(1,_+p+3,"(vocÍs) ").
+pronome(1,_+p+3,"(voc√™s) ").
 
 tempo(0,mi,pr,   'Presente').
-tempo(0,mi,pp,   'PretÈrito perfeito').
-tempo(0,mi,pi,   'PretÈrito imperfeito').
-tempo(0,mi,pm,   'PretÈrito mais-que-perfeito').
+tempo(0,mi,pp,   'Pret√©rito perfeito').
+tempo(0,mi,pi,   'Pret√©rito imperfeito').
+tempo(0,mi,pm,   'Pret√©rito mais-que-perfeito').
 tempo(0,mi,fp,   'Futuro do presente').
-tempo(0,mi,fi,   'Futuro do pretÈrito').
+tempo(0,mi,fi,   'Futuro do pret√©rito').
 tempo(0,ms,sp,   'Presente').
-tempo(0,ms,si,   'PretÈrito imperfeito').
-tempo(0,ms,sf,   'Futuro do pretÈrito').
+tempo(0,ms,si,   'Pret√©rito imperfeito').
+tempo(0,ms,sf,   'Futuro do pret√©rito').
 tempo(0,fn,i(f), 'Infinitivo pessoal').
 tempo(i,fn,i(i), 'Infinitivo impessoal').
-tempo(i,fn,g(-), 'Ger˙ndio').
-tempo(i,fn,p(_,_), 'ParticÌpio').
+tempo(i,fn,g(-), 'Ger√∫ndio').
+tempo(i,fn,p(_,_), 'Partic√≠pio').
 tempo(1,mp,imp(a), 'Imperativo afirmativo').
 tempo(1,mp,imp(n), 'Imperativo negativo').
 
@@ -107,11 +107,11 @@ conjuga(i,T,Tempo,_,G,LPs,LVs):-
 	lv(Lv,_+T,Verbo,""), t_w(2,Verbo).
 conjuga(_,_,_,_,_,_,_):- nl, t_w, get0_noecho(_).
 
-% get0_noecho(): predicado especÌfico do Arity/Prolog.
-% No C-Prolog (Sun), o resultado È que ele falha (pois n„o est· definido), 
-% fazendo com que a conjugaÁ„o se dÍ sem paradas, o que È o desej·vel.
+% get0_noecho(): predicado espec√≠fico do Arity/Prolog.
+% No C-Prolog (Sun), o resultado √© que ele falha (pois n√£o est√° definido), 
+% fazendo com que a conjuga√ß√£o se d√™ sem paradas, o que √© o desej√°vel.
 
- get0_noecho(_):- fail.     % vers„o SICStus (e C-Prolog)
+ get0_noecho(_):- fail.     % vers√£o SICStus (e C-Prolog)
 
 
 inicPros([Pro-P|R],Pv):- pronomes(Pro,P,Pv), inicPros(R,Pv).
@@ -125,7 +125,7 @@ pronomes(i  ,P+i,P).
 pronomes(r  ,P+r,P).
 
 titulo(-):- !.
-titulo(+):- tab(4), write('CoVer - ConjugaÁ„o e ComposiÁ„o Verbal da LÌngua Portuguesa'), 
+titulo(+):- tab(4), write('CoVer - Conjuga√ß√£o e Composi√ß√£o Verbal da L√≠ngua Portuguesa'), 
 	 nl, tab(4), write('(C)1993  Emiliano Gomes Padilha  -  Grupo de IA / UFRGS'), 
 	 nl.
 
@@ -188,7 +188,7 @@ verbo:- nl, nl, titulo(+), nl.
 
 conjuga:- repeat, write('
 
-Entre com o infinitivo dos verbos a conjugar (separe-os por vÌrgulas e coloque ponto-final: exemplos ''ser.'' ''vir,ver.'', etc), ou digite ''fim.'' para encerrar:
+Entre com o infinitivo dos verbos a conjugar (separe-os por v√≠rgulas e coloque ponto-final: exemplos ''ser.'' ''vir,ver.'', etc), ou digite ''fim.'' para encerrar:
 
 '),
         read(V), nl, nl, conjugaVrb(V), V == fim, !.
@@ -196,7 +196,7 @@ Entre com o infinitivo dos verbos a conjugar (separe-os por vÌrgulas e coloque p
 
 conjugaVrb(fim):- !.
 conjugaVrb(L):- lista(_,V,L), \+ verifVrb(V,V,vrb), !.
-conjugaVrb(L):- nl, write('>> ConjugaÁ„o de '), writeVar(L), nl, convVrb(L,V),
+conjugaVrb(L):- nl, write('>> Conjuga√ß√£o de '), writeVar(L), nl, convVrb(L,V),
         leTempos(Te), convLista(Te,T),
         lePessoa(Pe), convLista(Pe,P), nl, verbo(V,T,P).
 
@@ -228,23 +228,23 @@ vrbExiste(V,Cham,Tipo):-
 verifRepet(_,Cham,vrb,[Cham],[]):- !.
 verifRepet(_,Cham,vrb_,[],[Cham]):- !.
 verifRepet(V,Cham,vrb,[Cham|_],[]):- !,
-        write('**Aviso! H· mais de uma cl·usula vrb/5 para '''), write(V),
+        write('**Aviso! H√° mais de uma cl√°usula vrb/5 para '''), write(V),
         write(''' em Basev! Deve haver apenas uma para cada verbo.').
 verifRepet(V,Cham,vrb_,[],[Cham|_]):- !,
-        write('**Aviso! H· mais de uma cl·usula vrb_/5 para '''), write(V),
+        write('**Aviso! H√° mais de uma cl√°usula vrb_/5 para '''), write(V),
         write(''' em Basev! Deve haver apenas uma para cada verbo.').
 verifRepet(V,Cham,vrb,[Cham|_],[_|_]):-
-        write('**Aviso! '''), write(V), write(''' est· definido com '),
-        write('cl·usulas vrb/5 e vrb_/5 simultaneamente em Basev. '),
-        write('Deve haver apenas uma cl·usula para cada verbo.').
+        write('**Aviso! '''), write(V), write(''' est√° definido com '),
+        write('cl√°usulas vrb/5 e vrb_/5 simultaneamente em Basev. '),
+        write('Deve haver apenas uma cl√°usula para cada verbo.').
 
-falaVrbInexiste(V,V):- !, write('**AtenÁ„o! Verbo '''), write(V),
-        write(''' n„o est· definido em Basev.').
-falaVrbInexiste(VP,V):- write('**AtenÁ„o! Verbo '''), write(V),
+falaVrbInexiste(V,V):- !, write('**Aten√ß√£o! Verbo '''), write(V),
+        write(''' n√£o est√° definido em Basev.').
+falaVrbInexiste(VP,V):- write('**Aten√ß√£o! Verbo '''), write(V),
         write(''', do qual '''), write(VP),
-        write(''' deriva, n„o est· definido em Basev.').
+        write(''' deriva, n√£o est√° definido em Basev.').
 
-pergAprende:- write(' Deseja aprendÍ-lo ? (s./n.) '), read(s).
+pergAprende:- write(' Deseja aprend√™-lo ? (s./n.) '), read(s).
 
 %--------------
 
@@ -273,26 +273,26 @@ execTempos(L,_):- nonvar(L), lista(_,I,L),
    \+ membro(I,[mi,ms,mp,fn,pr,pp,pi,pm,fp,fi,sp,si,sf,imp(a),imp(n),g(_),
                 p(r,m+s),p(r,m+p),p(r,f+s),p(r,f+p),
                 p(i,m+s),p(i,m+p),p(i,f+s),p(i,f+p),i(i),i(f)]),
-   !, write('**Erro! "'), writeVar(I), write('" n„o È um tempo/modo v·lido. '),
-   write('Veja os cÛdigos v·lidos em (i.)nfo.'), nl, fail.
+   !, write('**Erro! "'), writeVar(I), write('" n√£o √© um tempo/modo v√°lido. '),
+   write('Veja os c√≥digos v√°lidos em (i.)nfo.'), nl, fail.
 execTempos(_,_):- retract(tempo_At(_)), fail.
 execTempos(T,T):- asserta(tempo_At(T)).
 
 tInfoTempo:- write('
 
-CÛdigos para os tempos/formas verbais:
+C√≥digos para os tempos/formas verbais:
   pr, pp, pi, pm, fp, fi (tempos do indicativo)
   sp, si, sf             (tempos do subjuntivo)'), write('
   imp(a), imp(n)         (imperativo afirmativo e negativo)
-  g(_), p(_,_), i(_)     (ger˙ndio, particÌpio e infinitivos)
+  g(_), p(_,_), i(_)     (ger√∫ndio, partic√≠pio e infinitivos)
 
-CÛdigos para os modos:'), write('
+C√≥digos para os modos:'), write('
   mi, ms, mp, fn  (indicativo, subjuntivo, imperativo e formas nominais)
 
-Pode-se especificar v·rios tempos e/ou modos separando-os por vÌrgulas:
+Pode-se especificar v√°rios tempos e/ou modos separando-os por v√≠rgulas:
      ''mi,sp,imp(n).''     ''g(_),ms,mp,pr,pp.''     ''fp,fi,sf.''
 
-!! N„o esquecer de terminar sempre com ponto (".") !!
+!! N√£o esquecer de terminar sempre com ponto (".") !!
 
 ').
 
@@ -310,7 +310,7 @@ pessoaAt((s+_,p+_)):- asserta(pessoa_At((s+_,p+_))).
 %--------------
 
 lePessoa(P):- nl, write('Entre com (i.)nfo, (d.)efault {'),
-   pessoaAt(Pd), writeVar(Pd), write('} ou os N˙meros/pessoas a mostrar: '),
+   pessoaAt(Pd), writeVar(Pd), write('} ou os N√∫meros/pessoas a mostrar: '),
    read(E), execPessoa(E,P), nl.
 
 execPessoa(E,P):- E == i, !, tInfoPessoa, lePessoa(P).
@@ -324,11 +324,11 @@ execPessoa(P,P):- asserta(pessoa_At(P)).
 
 tInfoPessoa:- write('
 
-CodificaÁ„o para n˙mero e pessoa:  N + P
+Codifica√ß√£o para n√∫mero e pessoa:  N + P
 Onde N pode ser  s, p, _     (singular, plural ou ambos), e
      P pode ser  1, 2, 3, _  (1a, 2a, 3a pessoas, ou todas)'), write('
 
-Pode-se colocar v·rios pares n˙mero/pessoa separados por vÌrgulas:
+Pode-se colocar v√°rios pares n√∫mero/pessoa separados por v√≠rgulas:
         ''s+2,p+3.''    ''_+1,p+_.''
 
 ').
@@ -338,14 +338,14 @@ Pode-se colocar v·rios pares n˙mero/pessoa separados por vÌrgulas:
 aprende(V,_):- nl, nl, write('Aprendizagem de '), write(V), write(':'), fail.
 aprende(V,T):- var(T), !, write('
 
-Este È um verbo normal (a ser definido com vrb/5) ?? (s./n.)
+Este √© um verbo normal (a ser definido com vrb/5) ?? (s./n.)
 (Se ele for uma raiz primitiva, a ser definida com vrb_/5, informe n.)
 
 '), read(Resp), tipoVerbo(Resp,T), aprende(V,T).
 
 aprende(V,T):- write('
 
-- Ele È derivado de outro verbo (como ''compor'' È derivado de ''pÙr'') ??  Se sim, dÍ o infinitivo desse outro verbo, sen„o coloque ''n.''
+- Ele √© derivado de outro verbo (como ''compor'' √© derivado de ''p√¥r'') ??  Se sim, d√™ o infinitivo desse outro verbo, sen√£o coloque ''n.''
 '),
         read(VI), deriva(V,VI,T).
 
@@ -367,7 +367,7 @@ prefixo(D,V,Pre):- name(D,Dl), name(V,Vl), inverte(Dl,[],Ld),
         inverte(Vl,[],Lv), conc(Lv,Erp,Ld), !, inverte(Erp,[],Pre).
 prefixo(D,V,_):- write('
 
-**AtenÁ„o! '''), write(V), write(''' n„o pode ser o originador de '''),
+**Aten√ß√£o! '''), write(V), write(''' n√£o pode ser o originador de '''),
         write(D), write('''!
 Verifique sua resposta e tente novamente.
 '), fail.
@@ -378,13 +378,13 @@ aprende2(V,T):- name(V,V0), altOrto(V0,D1), mutVocalica(D1,DL), !,
         cjg(DL,_+p(r,m+s),+,Part,[]),
         write('
 
-- Seu particÌpio normal (regular) È: '), writel(Part), write('.
-Ele possui particÌpio irregular ??
-Se sim, entre com essa forma caso o verbo aceite tambÈm a forma regular (no masculino-singular e terminada com ponto-final).
+- Seu partic√≠pio normal (regular) √©: '), writel(Part), write('.
+Ele possui partic√≠pio irregular ??
+Se sim, entre com essa forma caso o verbo aceite tamb√©m a forma regular (no masculino-singular e terminada com ponto-final).
 
-Se sim, mas o verbo aceita apenas um particÌpio irregular (e n„o a forma regular mostrada acima), informe-o **precedido pelo sinal ''-''** (no masculino-singular e com ponto-final).
+Se sim, mas o verbo aceita apenas um partic√≠pio irregular (e n√£o a forma regular mostrada acima), informe-o **precedido pelo sinal ''-''** (no masculino-singular e com ponto-final).
 
-Sen„o, apenas responda ''n.''.
+Sen√£o, apenas responda ''n.''.
 
 '),
         read(PI), detParticipio(PI,DL,Nd), ensinaCjg(V,T,Nd).
@@ -396,9 +396,9 @@ detParticipio(+F,D,D+FL):- atom(F), !, name(F,FL).
 detParticipio( F,D,D+FL):- atom(F), \+ F = s, name(F,FL).
 detParticipio(_,_,_):- write('
 
-**Erro! Apenas os seguintes valores seriam v·lidos aqui:
-''n.'' se o verbo apenas possui particÌpio regular,
-''-<Part.Irregular>.'' para a forma irregular ˙nica, ou
+**Erro! Apenas os seguintes valores seriam v√°lidos aqui:
+''n.'' se o verbo apenas possui partic√≠pio regular,
+''-<Part.Irregular>.'' para a forma irregular √∫nica, ou
 ''<Part.Irregular>.'' para a forma irregular adicional.
 Tente ensinar esse verbo novamente.
 '), fail.
@@ -408,15 +408,15 @@ Tente ensinar esse verbo novamente.
 altOrto(VL,D):- findall(D0,defLexica(VL,D0),L), escolhaDef(L,D).
 
 defLexica("guar","gua").
-defLexica("guar","g˙a"):- !.
+defLexica("guar","g√∫a"):- !.
 defLexica("quar","qua").
-defLexica("quar","q˙a"):- !.
+defLexica("quar","q√∫a"):- !.
 defLexica("guir","gui").
-defLexica("guir","g¸i").
-defLexica("guir","g˙i"):- !.
+defLexica("guir","g√ºi").
+defLexica("guir","g√∫i"):- !.
 defLexica("quir","qui").
-defLexica("quir","q¸i").
-defLexica("quir","q˙i"):- !.
+defLexica("quir","q√ºi").
+defLexica("quir","q√∫i"):- !.
 defLexica([V,R],[V]):- [R]="r", [V]="a", !.
 defLexica([V,R],[V]):- [R]="r", [V]="e", !.
 defLexica([V,R],[V]):- [R]="r", [V]="i", !.
@@ -426,20 +426,20 @@ defLexica([L|R],[L|R2]):- defLexica(R,R2).
 escolhaDef([D],D):- !.
 escolhaDef([],_):- !, write('
 
-**Erro! A palavra que vocÍ digitou n„o pode ser o infinitivo de um verbo! Verifique e tente novamente.
+**Erro! A palavra que voc√™ digitou n√£o pode ser o infinitivo de um verbo! Verifique e tente novamente.
 
 '), fail.
 
 escolhaDef(LD,D):- prepTemp(1,LD,LV), convLista(L0,LV), convVrb(L0,LVs),
         write('
 
-- Identifique qual conjugaÁ„o abaixo est· mais correta; se for a primeira, responda com ''1.'', se for a segunda, com ''2.'' e assim por diante:
+- Identifique qual conjuga√ß√£o abaixo est√° mais correta; se for a primeira, responda com ''1.'', se for a segunda, com ''2.'' e assim por diante:
 '),
         verbo(LVs,pr,_,m,-), nl, read(Esc), desfazTemp(Esc,D,LV), \+ D = !.
 
 escolhaDef(_,_):- write('
 
-**Erro! Voce deve informar apenas o n˙mero correspondente ‡ conjugaÁ„o correta. Tente ensinar esse verbo novamente.
+**Erro! Voce deve informar apenas o n√∫mero correspondente √† conjuga√ß√£o correta. Tente ensinar esse verbo novamente.
 
 '), fail.
 
@@ -465,7 +465,7 @@ mutacoesVoc(_,[L,V],[L,V]):- !.
 mutacoesVoc(_,[_],[_]):- !, fail.
 mutacoesVoc(_,[],[]):- !, fail.
 mutacoesVoc(-,[E|R],[S,E|R2]):- [E]="e", [S]="^", mutacoesVoc(+,R,R2).
-mutacoesVoc(-,[E|R],[S,W|R2]):- [E]="e", [W]="Î", [S]="^", mutacoesVoc(+,R,R2).
+mutacoesVoc(-,[E|R],[S,W|R2]):- [E]="e", [W]="√´", [S]="^", mutacoesVoc(+,R,R2).
 mutacoesVoc(-,[O|R],[S,O|R2]):- [O]="o", [S]="^", mutacoesVoc(+,R,R2).
 mutacoesVoc(-,[U|R],[S,U|R2]):- [U]="u", [S]="^", mutacoesVoc(+,R,R2).
 mutacoesVoc(F,[L|R],[L|R2]):- mutacoesVoc(F,R,R2).
@@ -474,7 +474,7 @@ mutacoesVoc(F,[L|R],[L|R2]):- mutacoesVoc(F,R,R2).
 
 ensinaCjg(V,T,DL):- write('
 
-Aprendizagem de '''), write(V), write(''' concluÌda.
+Aprendizagem de '''), write(V), write(''' conclu√≠da.
 >> Regra resultante a ser adicionada a Basev:
 
     '), write(T), write('('), write(V), write(',I,M) --> cjg('),
@@ -488,7 +488,7 @@ Aprendizagem de '''), write(V), write(''' concluÌda.
 
 ensinaVrb(V,T,V2,T2,Pre):- write('
 
-Aprendizagem de '''), write(V), write(''' concluÌda.
+Aprendizagem de '''), write(V), write(''' conclu√≠da.
 >> Regra resultante a ser adicionada a Basev:
 
     '), write(T), write('('), write(V), write(',I,M) --> '),
@@ -504,7 +504,7 @@ Aprendizagem de '''), write(V), write(''' concluÌda.
 
 ensinaVrb(V,T,V2,Pre):- write('
 
-Aprendizagem de '''), write(V), write(''' concluÌda.
+Aprendizagem de '''), write(V), write(''' conclu√≠da.
 >> Regra resultante a ser adicionada a Basev:
 
     '), write(T), write('('), write(V), write(',I,M) --> '),

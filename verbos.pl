@@ -2,38 +2,38 @@
 %------------------------------------------------------------------------
 %
 %  Universidade Federal do Rio Grande do Sul
-%  Instituto de Informática Teórica
-%  Bacharelado em Ciências da Computação
+%  Instituto de InformÃ¡tica TeÃ³rica
+%  Bacharelado em CiÃªncias da ComputaÃ§Ã£o
 %  Aluno: Emiliano Gomes Padilha
 %
-%  Projeto de Graduação			Semestre 93/2
-%  Título: Conjugação e Composição Verbal da Língua Portuguesa
-%  Área: Inteligência Artificial
-%  Campo: Processamento de Língua Natural
+%  Projeto de GraduaÃ§Ã£o			Semestre 93/2
+%  TÃ­tulo: ConjugaÃ§Ã£o e ComposiÃ§Ã£o Verbal da LÃ­ngua Portuguesa
+%  Ãrea: InteligÃªncia Artificial
+%  Campo: Processamento de LÃ­ngua Natural
 %  Orientadora: Prof. Rosa Maria Viccari
 %
 %------------------------------------------------------------------------
 % Nota: este arquivo possui caracteres acentuados da tabela de caracteres
-% do SunOS. É importante que os acentos sejam visíveis neste programa, pois
-% ele gera palavras portuguesas (naturalmente) acentuadas. Corrija através
+% do SunOS. Ã‰ importante que os acentos sejam visÃ­veis neste programa, pois
+% ele gera palavras portuguesas (naturalmente) acentuadas. Corrija atravÃ©s
 % de um editor de textos (recurso de busca-e-troca) com os caracteres da
 % tabela do seu programa/sistema operacional.
-% Os caracteres acentuados utilizados aqui são:
-%            á  -  a com acento agudo
-%            é  -  e com acento agudo
-%            í  -  i com acento agudo
-%            ó  -  o com acento agudo
-%            ú  -  u com acento agudo
-%            ã  -  a com til
-%            õ  -  o com til
-%            â  -  a com acento circunflexo
-%            ê  -  e com acento circunflexo
-%            ô  -  o com acento circunflexo
-%            à  -  a com acento grave (crase)
-%            ü  -  u com trema
-%            ç  -  c cedilha
-%            Á  -  A com acento agudo
-%            É  -  E com acento agudo
+% Os caracteres acentuados utilizados aqui sÃ£o:
+%            Ã¡  -  a com acento agudo
+%            Ã©  -  e com acento agudo
+%            Ã­  -  i com acento agudo
+%            Ã³  -  o com acento agudo
+%            Ãº  -  u com acento agudo
+%            Ã£  -  a com til
+%            Ãµ  -  o com til
+%            Ã¢  -  a com acento circunflexo
+%            Ãª  -  e com acento circunflexo
+%            Ã´  -  o com acento circunflexo
+%            Ã   -  a com acento grave (crase)
+%            Ã¼  -  u com trema
+%            Ã§  -  c cedilha
+%            Ã  -  A com acento agudo
+%            Ã‰  -  E com acento agudo
 %--------------------------------------------------------------------------
 
 
@@ -54,7 +54,7 @@ l2 --> [].
 branco(C):- C >= 0, C =< 32 ; C = 127.
 
 
-%__________________pronomes átonos____________________
+%__________________pronomes Ã¡tonos____________________
 
 n(_+p) --> "s".
 n(_+s) --> "".
@@ -71,7 +71,7 @@ pro(  _+3+r,0+0) --> "se".
 pro( GN+3+o,1  ) --> o(GN).
 
 
-%________próclise, ênclise, mesóclise
+%________prÃ³clise, Ãªnclise, mesÃ³clise
 
 v(V,I,p(P)) --> pro(P,_), l, imp(V,I,M), { \+ M=1 }, l.
 v(V,I,MODO) --> imp(V,I,M), posclise(I,M,MODO), l.
@@ -98,7 +98,7 @@ enclise(P,1,I+T) -->    pro(P,0+1), { \+ T=i(i), I ==  p+1 }.
 
 %__________________verbos com imperativo____________________
 imp(V,I,M) --> vrb(V,I,M).
-imp(ser,s+2+imp(a),-) --> "sê".
+imp(ser,s+2+imp(a),-) --> "sÃª".
 imp(ser,p+2+imp(a),-) --> "sede".
 imp(  V,p+2+imp(a),-) --> { \+ V=ser }, vrb(V,p+2+pr,1).
 imp(  V,s+2+imp(a),M) --> { \+ V=ser }, vrb(V,s+3+pr,M).
@@ -108,9 +108,9 @@ imp(  V, NP+imp(n),M) --> vrb(V,NP+sp,M), { \+ NP=s+1, \+ M=1 }.
 
 
 
-%__________________composição verbal (nível sintático)____________________
+%__________________composiÃ§Ã£o verbal (nÃ­vel sintÃ¡tico)____________________
 
-%________equivalência entre gerúndio e infinitivo
+%________equivalÃªncia entre gerÃºndio e infinitivo
 v(V,I+g(T),A) --> "a", l, v(V,I+i(T),A).
 
 %________voz passiva
@@ -120,7 +120,7 @@ lv([ser,A,J+p(i,GN),V,A2],I) --> v(ser,I,A), v(V,J+p(i,GN),A2).
 lv([  ter,A,J+p(r,m+s)|L],I) -->   v(ter,I,A), lv(L,J+p(r,m+s)).
 lv([haver,A,J+p(r,m+s)|L],I) --> v(haver,I,A), lv(L,J+p(r,m+s)).
 
-%________auxiliares de gerúndio e particípio (verbos de ligação)
+%________auxiliares de gerÃºndio e particÃ­pio (verbos de ligaÃ§Ã£o)
 lv([V,A,J|L],I) --> v(V,I,A), { aux(V) }, lv(L,J), { membro(J,[_+p(i,_),_+g(_)]) }.
 
 aux(estar).	aux(viver).	aux(continuar).
@@ -142,15 +142,15 @@ aux(principiar,"a").	aux(comecar,"a").	aux(tornar,"a").
 aux(acabar,"de").	aux(cessar,"de").	aux(gostar,"de").
 aux(haver,"de").
 
-%________voz ativa (e último verbo de uma locução)
+%________voz ativa (e Ãºltimo verbo de uma locuÃ§Ã£o)
 lv([V,A],I) --> v(V,I,A).
 
 
 
 
-%__________________conjugação verbal regular____________________
+%__________________conjugaÃ§Ã£o verbal regular____________________
 
-%________verificação de consoantes s/r/z finais
+%________verificaÃ§Ã£o de consoantes s/r/z finais
 s(0) --> "s".
 s(1) --> "".
 
@@ -160,26 +160,26 @@ r(1) --> "".
 z(0) --> "z".	% aparece somente nos verbos terminados em "zir" e nas
 z(1) --> "".	% formas "apraz", "diz", "traz", "faz", "fez" e "fiz".
 
-%________acentuação das vogais (temáticas)
+%________acentuaÃ§Ã£o das vogais (temÃ¡ticas)
 a(_,0) --> "a".
-a(a,1) --> "á".
+a(a,1) --> "Ã¡".
 
 e(_,0) --> "e".
-e(f,1) --> "ê".
-e(a,1) --> "é".
+e(f,1) --> "Ãª".
+e(a,1) --> "Ã©".
 
 i(_,0) --> "i".
-i(a,1) --> "í".
+i(a,1) --> "Ã­".
 
 o(_,0) --> "o".
-o(f,1) --> "ô".
-o(a,1) --> "ó".
+o(f,1) --> "Ã´".
+o(a,1) --> "Ã³".
 
 u(_,0) --> "u".
-u(a,1) --> "ú".
-u(t,1) --> "ü".
+u(a,1) --> "Ãº".
+u(t,1) --> "Ã¼".
 
-%________desinências regulares
+%________desinÃªncias regulares
 de(p+1,M) --> "mo", s(M).
 de(p+2,M) --> "i", s(M).
 de(p+3,n) --> "m".
@@ -187,53 +187,53 @@ de(s+1,-) --> "".
 de(s+3,-) --> "".
 de(s+2,M) --> s(M).
 
-%________desinências com vogal temática
+%________desinÃªncias com vogal temÃ¡tica
 de2(K+T,NP,M) --> { vt(K+T,NP) }, de(NP), de(NP,M).
 de3(K+T,NP,M) --> { vt(K+T,NP) }, de(NP,M).
 
-%________acentuação da vogal temática em p+1/p+2
+%________acentuaÃ§Ã£o da vogal temÃ¡tica em p+1/p+2
 vt(0+1,p+P):- membro(P,[1,2]).
 vt(0+0,N+P):- membro(N+P,[s+_,p+3]).
 vt(1+1,_).
 
-%________vogal da desinência de p+2 dos tempos pi/pm
+%________vogal da desinÃªncia de p+2 dos tempos pi/pm
 de(p+2) --> "e".
 de(N+P) --> "a", { \+ N+P=p+2 }.
 
 
-%________desinências do presente do indicativo
+%________desinÃªncias do presente do indicativo
 pr(_+"a") --> "a".  % louv+a
 pr(0+"e") --> "e".  % vend+e
-pr(1+"e") --> "i".  % dó+i (dó+e)
+pr(1+"e") --> "i".  % dÃ³+i (dÃ³+e)
 pr(0+"i") --> "e".  % part+e
 pr(1+"i") --> "i".  % ca+i (ca+e)
 
-%________desinências do presente do subjuntivo
+%________desinÃªncias do presente do subjuntivo
 sp("a") --> "e".	% louv+e
 sp("e") --> "a".	% vend+a
 sp("i") --> "a".	% part+a
 
-%________acentuação do "i" como vogal temática nos tempos pr/pp
+%________acentuaÃ§Ã£o do "i" como vogal temÃ¡tica nos tempos pr/pp
 vo(K+"i") --> !, i(a,K).
 vo(_+[V]) --> [V].
 
 
-%________desinências do futuro do indicativo
+%________desinÃªncias do futuro do indicativo
 fp(s+1,-) --> "ei".
-fp(p+3,n) --> "ão".
-fp(s+P,M) --> "á", de(s+P,M), { membro(P,[2,3]) }.
+fp(p+3,n) --> "Ã£o".
+fp(s+P,M) --> "Ã¡", de(s+P,M), { membro(P,[2,3]) }.
 fp(p+P,M) --> "e", de(p+P,M), { membro(P,[1,2]) }.
 fi(N+P,M) --> i(a,T), de2(0+T,N+P,M).
 
 
 %________infinitivo impessoal e futuro do subjuntivo (s+1, s+3)
-inf(_+"a",M) --> a(a,M), r(M).  % matá-lo
-inf(_+"e",M) --> e(f,M), r(M).  % dizê-lo
-inf(_+"é",M) --> e(a,M), r(M).  % verbos irregulares (no fut.subj.)
+inf(_+"a",M) --> a(a,M), r(M).  % matÃ¡-lo
+inf(_+"e",M) --> e(f,M), r(M).  % dizÃª-lo
+inf(_+"Ã©",M) --> e(a,M), r(M).  % verbos irregulares (no fut.subj.)
 inf(0+"i",M) --> i(a,0), r(M).  % feri-lo
-inf(1+"i",M) --> i(a,M), r(M).  % traí-lo
-inf(0+"o",M) --> o(f,M), r(M).  % for, fô-lo (somente)
-inf(1+"o",M) --> o(f,1), r(M).  % pôr, pô-lo (somente)
+inf(1+"i",M) --> i(a,M), r(M).  % traÃ­-lo
+inf(0+"o",M) --> o(f,M), r(M).  % for, fÃ´-lo (somente)
+inf(1+"o",M) --> o(f,1), r(M).  % pÃ´r, pÃ´-lo (somente)
 
 %________infinitivo pessoal e futuro do subjuntivo
 inf(_+[V],p+2,M) --> [V], "rde", s(M).
@@ -244,7 +244,7 @@ inf(K+"i",N+P,M) --> i(a,K), "re", de(N+P,M), { membro(N+P,[s+2,p+3]) }.
 inf(_+"o",N+P,M) --> o(f,0), "re", de(N+P,M), { membro(N+P,[s+2,p+3]) }.
 
 
-%________desinências dos verbos regulares
+%________desinÃªncias dos verbos regulares
 
 reg(_+[V],  _+g(-),-) --> [V], "ndo".
 reg(_+"a",_+p(_,I),+) --> "ad",        o(I).
@@ -280,7 +280,7 @@ reg(K+"i",NP+pi,M) --> i(a,T),      de2(K+T,NP,M).
 reg(_+"a",NP+pm,M) --> a(a,T), "r", de2(0+T,NP,M).
 reg(_+"e",NP+pm,M) --> e(f,T), "r", de2(0+T,NP,M).
 reg(K+"i",NP+pm,M) --> i(a,T), "r", de2(K+T,NP,M).
-reg(_+"é",NP+pm,M) --> e(a,T), "r", de2(0+T,NP,M). %verbos irregulares
+reg(_+"Ã©",NP+pm,M) --> e(a,T), "r", de2(0+T,NP,M). %verbos irregulares
 reg(_+"o",NP+pm,M) --> o(f,T), "r", de2(0+T,NP,M). %verbos irregulares
 
 reg(_+[V],NP+fp,+) --> [V], "r", fp(NP,M), { \+ M=1 }.
@@ -291,11 +291,11 @@ reg(_+[V],NP+sp,M) --> sp([V]), de(NP,M).
 reg(_+"a",NP+si,M) --> a(a,T), "sse", de3(0+T,NP,M).
 reg(_+"e",NP+si,M) --> e(f,T), "sse", de3(0+T,NP,M).
 reg(K+"i",NP+si,M) --> i(a,T), "sse", de3(K+T,NP,M).
-reg(_+"é",NP+si,M) --> e(a,T), "sse", de3(0+T,NP,M). %verbos irregulares
+reg(_+"Ã©",NP+si,M) --> e(a,T), "sse", de3(0+T,NP,M). %verbos irregulares
 reg(_+"o",NP+si,M) --> o(f,T), "sse", de3(0+T,NP,M). %verbos irregulares
 
 reg(K+[V],s+P+sf,M) --> inf(K+[V],M), { membro(P,[1,3]) }.
-reg(K+"é", NP+sf,M) --> !, inf(K+"e",NP,M).	%verbos irregulares
+reg(K+"Ã©", NP+sf,M) --> !, inf(K+"e",NP,M).	%verbos irregulares
 reg(K+[V], NP+sf,M) --> inf(K+[V],NP,M).
 
 
@@ -304,25 +304,25 @@ reg(K+[V], NP+sf,M) --> inf(K+[V],NP,M).
 co(1,I,L):- membro(I,L).
 co(0,I,L):- \+ membro(I,L).
 
-%________alterações ortográficas próximo às desinências verbais
-c_(0) --> "ç".	  c_(1) --> "c".	% de ...çar, ...cer, ...cir
+%________alteraÃ§Ãµes ortogrÃ¡ficas prÃ³ximo Ã s desinÃªncias verbais
+c_(0) --> "Ã§".	  c_(1) --> "c".	% de ...Ã§ar, ...cer, ...cir
 k(0) --> "c".	  k(1) --> "qu".	% de ...car, ...quer, ...quir
 g(0) --> "g".	  g(1) --> "gu".	% de ...gar, ...guer, ...guir
 j(0) --> "g".	  j(1) --> "j".		% de ...ger, ...gir
 i(0) --> "".      i(1) --> "i".         % de ...ear, ...air
 
-ei(0) --> "i".	  ei(1) --> "ei".	% só em ansiar/incendiar/odiar
-ui(0) --> "u".	  ui(1) --> "ó".	% só em construir/destruir
-ca(0) --> "d".	  ca(1) --> "c".	% só em perder
-lh(0) --> "l".	  lh(1) --> "lh".	% só em valer
-d(0) --> "d".	  d(1) --> "ç".		% só em medir/pedir
-v(0) --> "v".	  v(1) --> "ç".		% só em ouvir
+ei(0) --> "i".	  ei(1) --> "ei".	% sÃ³ em ansiar/incendiar/odiar
+ui(0) --> "u".	  ui(1) --> "Ã³".	% sÃ³ em construir/destruir
+ca(0) --> "d".	  ca(1) --> "c".	% sÃ³ em perder
+lh(0) --> "l".	  lh(1) --> "lh".	% sÃ³ em valer
+d(0) --> "d".	  d(1) --> "Ã§".		% sÃ³ em medir/pedir
+v(0) --> "v".	  v(1) --> "Ã§".		% sÃ³ em ouvir
 
-%________regras das alterações ortográficas próximo às desinências
-ort3(["ca","ça","ce","ci","ga","ge","gi","zi","oe","oa","éa","ea","ai"]).
+%________regras das alteraÃ§Ãµes ortogrÃ¡ficas prÃ³ximo Ã s desinÃªncias
+ort3(["ca","Ã§a","ce","ci","ga","ge","gi","zi","oe","oa","Ã©a","ea","ai"]).
 
 ort("ca",I,M) --> k(K), reg(0+"a",I,M), { co(K,I,[s+1+pp,_+sp]) }.
-ort("ça",I,M) --> c_(K), reg(0+"a",I,M), { co(K,I,[s+1+pp,_+sp]) }.
+ort("Ã§a",I,M) --> c_(K), reg(0+"a",I,M), { co(K,I,[s+1+pp,_+sp]) }.
 ort("ce",I,M) --> c_(K), reg(0+"e",I,M), { \+ co(K,I,[s+1+pr,_+sp]) }.
 ort("ci",I,M) --> c_(K), reg(0+"i",I,M), { \+ co(K,I,[s+1+pr,_+sp]) }.
 
@@ -334,28 +334,28 @@ ort("zi",I,M) --> "z",  reg(0+"i",I,M), { \+ I=s+3+pr } ; z(M), { I = s+3+pr }.
 ort("oe",I,M) --> o(a,1), reg(1+"e",I,M), { membro(I,[s+2+pr,_+3+pr]) }.
 ort("oe",I,M) --> o(f,K), reg(1+"e",I,M), { co(K,I,[s+1+pr]), \+ membro(I,[s+2+pr,_+3+pr]) }.
 ort("oa",I,M) --> o(f,K),       reg(1+"a",I,M), { co(K,I,[s+1+pr]) }.
-ort("éa",I,M) --> e(a,K), i(K), reg(1+"a",I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
+ort("Ã©a",I,M) --> e(a,K), i(K), reg(1+"a",I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
 ort("ea",I,M) --> "e",    i(K), reg(1+"a",I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
 ort("ai",I,M) --> "a",    i(K), reg(1+"i",I,M), { co(K,I,[s+1+pr,_+sp]) }.
 
 % (existem verbos terminados em aer/ier/uer/eir/oir??)
 
-%________alterações ortográficas das combinações de gu/qu
-ort4(["ue","ui","ua","üi","úa","úi"]).
+%________alteraÃ§Ãµes ortogrÃ¡ficas das combinaÃ§Ãµes de gu/qu
+ort4(["ue","ui","ua","Ã¼i","Ãºa","Ãºi"]).
 
 ort("q","ue",I,M) --> k(K), reg(0+"e",I,M), { \+ co(K,I,[s+1+pr,_+sp]) }.
 ort("q","ui",I,M) --> k(K), reg(0+"i",I,M), { \+ co(K,I,[s+1+pr,_+sp]) }.
 ort("g","ue",I,M) --> g(K), reg(0+"e",I,M), { \+ co(K,I,[s+1+pr,_+sp]) }.
 ort("g","ui",I,M) --> g(K), reg(0+"i",I,M), { \+ co(K,I,[s+1+pr,_+sp]) }.
 ort([C],"ua",I,M) --> [C], u(t,K), reg(1+"a",I,M), { co(K,I,[s+1+pp,_+sp]) }.
-ort([C],"üi",I,M) --> [C], u(t,K), reg(1+"i",I,M), { \+ co(K,I,[s+1+pr,_+sp]) }.
-ort([C],"úa",I,M) --> [C], u(a,1), reg(1+"a",I,M), { membro(I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
-ort([C],"úa",I,M) --> ort([C],"ua",I,M),        { \+ membro(I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
-ort([C],"úi",I,M) --> [C], u(a,1), reg(1+"i",I,M), { membro(I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
-ort([C],"úi",I,M) --> ort([C],"üi",I,M),        { \+ membro(I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
+ort([C],"Ã¼i",I,M) --> [C], u(t,K), reg(1+"i",I,M), { \+ co(K,I,[s+1+pr,_+sp]) }.
+ort([C],"Ãºa",I,M) --> [C], u(a,1), reg(1+"a",I,M), { membro(I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
+ort([C],"Ãºa",I,M) --> ort([C],"ua",I,M),        { \+ membro(I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
+ort([C],"Ãºi",I,M) --> [C], u(a,1), reg(1+"i",I,M), { membro(I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
+ort([C],"Ãºi",I,M) --> ort([C],"Ã¼i",I,M),        { \+ membro(I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
 
 
-%________alterações ortográficas específicas (apenas alguns verbos)
+%________alteraÃ§Ãµes ortogrÃ¡ficas especÃ­ficas (apenas alguns verbos)
 esp("ia",I,M) --> ei(K), reg(1+"a",I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
 esp("ui",I,M) --> ui(K), reg(1+"i",I,M), { co(K,I,[s+2+pr,_+3+pr]) }.
 esp("de",I,M) --> ca(K), reg(0+"e",I,M), { co(K,I,[s+1+pr,_+sp]) }.
@@ -364,23 +364,23 @@ esp("di",I,M) --> d(K),  reg(0+"i",I,M), { co(K,I,[s+1+pr,_+sp]) }.
 esp("vi",I,M) --> v(K),  reg(0+"i",I,M), { co(K,I,[s+1+pr,_+sp]) }.
 
 
-%________mutações vocálicas no radical (de verbos de 3a. conjugação)
+%________mutaÃ§Ãµes vocÃ¡licas no radical (de verbos de 3a. conjugaÃ§Ã£o)
 e_i(0) --> "e".		e_i(1) --> "i".
 o_u(0) --> "o".		o_u(1) --> "u".
 
-%________regras de mutações vocálicas
+%________regras de mutaÃ§Ãµes vocÃ¡licas
 mut("e",R,I,M) --> e_i(K), cjg(R,I,M), { co(K,I,[s+1+pr,_+sp]) }.
-mut("ë",R,I,M) --> e_i(K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,_+sp]) }.
+mut("Ã«",R,I,M) --> e_i(K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,_+sp]) }.
 mut("i",R,I,M) --> e_i(K), cjg(R,I,M), { \+ co(K,I,[s+2+pr,_+3+pr]) }.
 mut("o",R,I,M) --> o_u(K), cjg(R,I,M), { co(K,I,[s+1+pr,_+sp]) }.
 mut("u",R,I,M) --> o_u(K), cjg(R,I,M), { \+ co(K,I,[s+2+pr,_+3+pr]) }.
 
-%________irregularidades funcionalmente idênticas à mutação vocálica
-mut("á",R,I,M) --> a(a,K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
-mut("é",R,I,M) --> e(a,K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
-mut("í",R,I,M) --> i(a,K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
-mut("ó",R,I,M) --> o(a,K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
-mut("ú",R,I,M) --> u(a,K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
+%________irregularidades funcionalmente idÃªnticas Ã  mutaÃ§Ã£o vocÃ¡lica
+mut("Ã¡",R,I,M) --> a(a,K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
+mut("Ã©",R,I,M) --> e(a,K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
+mut("Ã­",R,I,M) --> i(a,K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
+mut("Ã³",R,I,M) --> o(a,K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
+mut("Ãº",R,I,M) --> u(a,K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }.
 
 
 
@@ -388,15 +388,15 @@ mut("ú",R,I,M) --> u(a,K), cjg(R,I,M), { co(K,I,[s+_+pr,p+3+pr,s+_+sp,p+3+sp]) }
 vogais(V,1):- membro([V],["a","e","i","o","u"]), !.
 vogais(_,0).
 
-cjg([94,V|R],I,M)  --> !, mut([V],R,I,M).      % 94: código de ^
-cjg([47|R],I,M)    --> !, esp(R,I,M).          % 47: código de /
+cjg([94,V|R],I,M)  --> !, mut([V],R,I,M).      % 94: cÃ³digo de ^
+cjg([47|R],I,M)    --> !, esp(R,I,M).          % 47: cÃ³digo de /
 cjg([L,V],I,M)     --> { ort3(Cs), membro([L,V],Cs) }, !, ort([L,V],I,M).
 cjg([L,V],I,M)     --> !, [L], { vogais(L,K) }, reg(K+[V],I,M).
 cjg([103,L,V],I,M) --> { ort4(Cs), membro([L,V],Cs) }, !, ort([103],[L,V],I,M).
 cjg([113,L,V],I,M) --> { ort4(Cs), membro([L,V],Cs) }, !, ort([113],[L,V],I,M).
-cjg([L|R],I,M)     --> [L], cjg(R,I,M).        %103,113: códigos de g/q
+cjg([L|R],I,M)     --> [L], cjg(R,I,M).        %103,113: cÃ³digos de g/q
 
-%________particípios irregulares
+%________particÃ­pios irregulares
 cjg(_+L,_+p(i,I),+) --> nom(L,I).
 cjg(L+_,_+p(r,I),+) --> cjg(L,_+p(_,I),+).
 cjg(L+_,       I,M) --> cjg(L,I,M), { \+ I=_+p(_,_) }.
@@ -409,13 +409,13 @@ nom("e",I)   --> "e", n(I).
 
 
 
-%__________________conjugação de verbos (muito) irregulares_____________________
+%__________________conjugaÃ§Ã£o de verbos (muito) irregulares_____________________
 
 %________estar
 
 estar(s+1+pr,-) --> "ou".
-estar(p+3+pr,n) --> "ão".
-estar(s+P+pr,M) --> "á", de(s+P,M), { membro(P,[2,3]) }.
+estar(p+3+pr,n) --> "Ã£o".
+estar(s+P+pr,M) --> "Ã¡", de(s+P,M), { membro(P,[2,3]) }.
 estar(p+P+pr,M) --> reg(0+"a",p+P+pr,M), { membro(P,[1,2]) }.
 
 estar(NP+sp,M) --> "ej", reg(0+"e",NP+sp,M).
@@ -435,12 +435,12 @@ estar(NP+sf,M) --> ter(0,NP+sf,M).
 %________dar
 
 dar(s+1+pr,-) --> "ou".
-dar(p+3+pr,n) --> "ão".
-dar(s+P+pr,M) --> "á", de(s+P,M), { membro(P,[2,3]) }.
+dar(p+3+pr,n) --> "Ã£o".
+dar(s+P+pr,M) --> "Ã¡", de(s+P,M), { membro(P,[2,3]) }.
 dar(p+P+pr,M) --> reg(0+"a",p+P+pr,M), { membro(P,[1,2]) }.
 
-dar(s+P+sp,M) --> "ê", de(s+P,M).
-dar(p+3+sp,M) --> "êe", de(p+3,M).
+dar(s+P+sp,M) --> "Ãª", de(s+P,M).
+dar(p+3+sp,M) --> "Ãªe", de(p+3,M).
 dar(p+P+sp,M) --> reg(0+"a",p+P+sp,M), { membro(P,[1,2]) }.
 
 dar(NP+pi    ,M) --> reg(0+"a",NP+pi,M).
@@ -453,20 +453,20 @@ dar(NP+p(_,I),M) --> reg(0+"a",NP+p(_,I),M).
 dar(s+1+pp,M) --> reg(0+"a",s+1+pp,M).
 dar( NP+pp,M) --> reg(0+"e",NP+pp,M), { \+ NP=s+1 }.
 
-dar(NP+pm,M) --> reg(0+"é",NP+pm,M).
-dar(NP+si,M) --> reg(0+"é",NP+si,M).
-dar(NP+sf,M) --> reg(0+"é",NP+sf,M).
+dar(NP+pm,M) --> reg(0+"Ã©",NP+pm,M).
+dar(NP+si,M) --> reg(0+"Ã©",NP+si,M).
+dar(NP+sf,M) --> reg(0+"Ã©",NP+sf,M).
 
 %________ser
 
 ser(s+1+pr,-) --> "s", "ou".
-ser(p+3+pr,n) --> "s", "ão".
-ser(s+P+pr,M) -->      "é", de(s+P,M), { membro(P,[2,3]) }.
+ser(p+3+pr,n) --> "s", "Ã£o".
+ser(s+P+pr,M) -->      "Ã©", de(s+P,M), { membro(P,[2,3]) }.
 ser(p+P+pr,M) --> "s", "o", de(p+P,M), { membro(P,[1,2]) }.
 
 ser(NP+sp,M) --> "s", "ej", reg(0+"e",NP+sp,M).
 
-ser(NP+pi,M) --> reg(0+"é",NP+pm,M).
+ser(NP+pi,M) --> reg(0+"Ã©",NP+pm,M).
 
 ser(NP+fp    ,M) --> "s", reg(0+"e",NP+fp,M).
 ser(NP+fi    ,M) --> "s", reg(0+"e",NP+fi,M).
@@ -488,7 +488,7 @@ ter(I,M) --> "t", ter(1,I,M).
 
 ter(_,s+1+pr,M) --> "enh", reg(0+"e",s+1+pr,M).
 ter(_,p+1+pr,M) --> reg(0+"e",p+1+pr,M).
-ter(_,p+3+pr,M) --> "ê", de(p+3,M).
+ter(_,p+3+pr,M) --> "Ãª", de(p+3,M).
 ter(K,s+3+pr,n) --> e(a,K), "m".
 ter(K,s+2+pr,1) --> e(a,K), "m".
 ter(_,s+2+pr,0) --> "e",    "ns".
@@ -508,9 +508,9 @@ ter(_,s+1+pp,-) --> "ive".
 ter(_,s+3+pp,-) --> "eve".
 ter(_, NP+pp,M) --> "iv", reg(0+"e",NP+pp,M), { membro(NP,[s+2,p+_]) }.
 
-ter(_,NP+pm,M) --> "iv", reg(0+"é",NP+pm,M).
-ter(_,NP+si,M) --> "iv", reg(0+"é",NP+si,M).
-ter(_,NP+sf,M) --> "iv", reg(0+"é",NP+sf,M).
+ter(_,NP+pm,M) --> "iv", reg(0+"Ã©",NP+pm,M).
+ter(_,NP+si,M) --> "iv", reg(0+"Ã©",NP+si,M).
+ter(_,NP+sf,M) --> "iv", reg(0+"Ã©",NP+sf,M).
 
 %________haver
 
@@ -530,17 +530,17 @@ haver(s+1+pp,-) --> "ouv", "e".
 haver(s+3+pp,-) --> "ouv", "e".
 haver( NP+pp,M) --> "ouv", reg(0+"e",NP+pp,M), { membro(NP,[s+2,p+_]) }.
 
-haver(NP+pm,M) --> "ouv", reg(0+"é",NP+pm,M).
-haver(NP+si,M) --> "ouv", reg(0+"é",NP+si,M).
-haver(NP+sf,M) --> "ouv", reg(0+"é",NP+sf,M).
+haver(NP+pm,M) --> "ouv", reg(0+"Ã©",NP+pm,M).
+haver(NP+si,M) --> "ouv", reg(0+"Ã©",NP+si,M).
+haver(NP+sf,M) --> "ouv", reg(0+"Ã©",NP+sf,M).
 
-%________pôr (e derivados)
+%________pÃ´r (e derivados)
 
 por(I,M) --> "p", por(0,I,M).
 
 por(_,s+1+pr,M) --> "onh", reg(0+"e",s+1+pr,M).
-por(_,s+3+pr,n) --> "õe".
-por(_, NP+pr,M) --> "õe", de(NP,M), { membro(NP,[s+2,p+3]) }.
+por(_,s+3+pr,n) --> "Ãµe".
+por(_, NP+pr,M) --> "Ãµe", de(NP,M), { membro(NP,[s+2,p+3]) }.
 por(_,p+1+pr,M) --> "o",  de(p+1,M).
 por(_,p+2+pr,M) --> "o", "nde", s(M).
 
@@ -557,30 +557,30 @@ por(K,NP+i(I),M) --> reg(K+"o",NP+i(I),M).
 por(_, _+p(_,I),+) --> "o", "st", o(I).
 
 por(_,s+1+pp,M) --> "u", s(M).
-por(_,s+3+pp,M) --> "ô", s(M).
+por(_,s+3+pp,M) --> "Ã´", s(M).
 por(_, NP+pp,M) --> "us", reg(0+"e",NP+pp,M), { membro(NP,[s+2,p+_]) }.
 
-por(_,NP+pm,M) --> "us", reg(0+"é",NP+pm,M).
-por(_,NP+si,M) --> "us", reg(0+"é",NP+si,M).
-por(_,NP+sf,M) --> "us", reg(0+"é",NP+sf,M).
+por(_,NP+pm,M) --> "us", reg(0+"Ã©",NP+pm,M).
+por(_,NP+si,M) --> "us", reg(0+"Ã©",NP+si,M).
+por(_,NP+sf,M) --> "us", reg(0+"Ã©",NP+sf,M).
 
 %________ir/transir
 
 ir(s+1+pr,-) --> "v", "ou".
-ir(p+3+pr,n) --> "v", "ão".
+ir(p+3+pr,n) --> "v", "Ã£o".
 ir(s+P+pr,M) --> "v", "ai", de(s+P,M), { membro(P,[2,3]) }.
 ir(p+1+pr,M) --> "v", "a",  de(p+1,M).
 ir(p+2+pr,M) --> "i", "de", s(M).
 
-ir(s+P+sp,M) --> "vá", de(s+P,M).
+ir(s+P+sp,M) --> "vÃ¡", de(s+P,M).
 ir(p+1+sp,M) --> "va", de(p+1,M).
-ir(p+3+sp,n) --> "v", "ão".
+ir(p+3+sp,n) --> "v", "Ã£o".
 ir(p+2+sp,M) --> "va", "de", s(M).
 
 ir(NP+pi    ,M) --> reg(0+"i",NP+pi,M).
 ir(NP+fp    ,M) --> reg(0+"i",NP+fp,M).
 ir(NP+fi    ,M) --> reg(0+"i",NP+fi,M).
-ir(NP+i(I)  ,M) --> reg(1+"i",NP+i(I),M). %% í-lo, íres, írem ??
+ir(NP+i(I)  ,M) --> reg(1+"i",NP+i(I),M). %% Ã­-lo, Ã­res, Ã­rem ??
 ir(NP+g(I)  ,M) --> reg(0+"i",NP+g(I),M).
 ir(NP+p(_,I),M) --> reg(0+"i",NP+p(_,I),M).
 
@@ -598,7 +598,7 @@ vir(I,M) --> "v", vir(1,I,M).
 
 vir(_,s+1+pr,M) --> "enh", reg(0+"i",s+1+pr,M).
 vir(_,p+1+pr,M) --> reg(0+"i",p+1+pr,M).
-vir(_,p+3+pr,M) --> "ê", de(p+3,M).
+vir(_,p+3+pr,M) --> "Ãª", de(p+3,M).
 vir(K,s+3+pr,n) --> e(a,K), "m".
 vir(K,s+2+pr,1) --> e(a,K), "m".
 vir(_,s+2+pr,0) --> "e",    "ns".
@@ -619,9 +619,9 @@ vir(_,s+1+pp,n) --> "im".
 vir(_,s+3+pp,-) --> "eio".
 vir(_, NP+pp,M) --> "i", reg(1+"e",NP+pp,M), { membro(NP,[s+2,p+_]) }.
 
-vir(_,NP+pm,M) --> "i", reg(1+"é",NP+pm,M).
-vir(_,NP+si,M) --> "i", reg(1+"é",NP+si,M).
-vir(_,NP+sf,M) --> "i", reg(1+"é",NP+sf,M).
+vir(_,NP+pm,M) --> "i", reg(1+"Ã©",NP+pm,M).
+vir(_,NP+si,M) --> "i", reg(1+"Ã©",NP+si,M).
+vir(_,NP+sf,M) --> "i", reg(1+"Ã©",NP+sf,M).
 
 %________rir (0), sorrir (1)
 
@@ -649,8 +649,8 @@ rir(_,NP+sf    ,M) --> reg(0+"i",NP+sf,M).
 
 xxer(s+1+pr,M) --> "ei", reg(1+"e",s+1+pr,M).
 xxer(p+1+pr,M) --> reg(0+"e",p+1+pr,M).
-xxer(s+P+pr,M) --> "ê",  de(s+P,M), { membro(P,[2,3]) }.
-xxer(p+3+pr,M) --> "êe", de(p+3,M).
+xxer(s+P+pr,M) --> "Ãª",  de(s+P,M), { membro(P,[2,3]) }.
+xxer(p+3+pr,M) --> "Ãªe", de(p+3,M).
 xxer(p+2+pr,M) --> "e", "de", s(M).
 
 xxer(NP+sp,M) --> "ei", reg(1+"e",NP+sp,M).
@@ -685,16 +685,16 @@ xaber(_,s+1+pp,-) --> "oub", "e".
 xaber(_,s+3+pp,-) --> "oub", "e".
 xaber(_, NP+pp,M) --> "oub", reg(0+"e",NP+pp,M), { membro(NP,[s+2,p+_]) }.
 
-xaber(_,NP+pm,M) --> "oub", reg(0+"é",NP+pm,M).
-xaber(_,NP+si,M) --> "oub", reg(0+"é",NP+si,M).
-xaber(_,NP+sf,M) --> "oub", reg(0+"é",NP+sf,M).
+xaber(_,NP+pm,M) --> "oub", reg(0+"Ã©",NP+pm,M).
+xaber(_,NP+si,M) --> "oub", reg(0+"Ã©",NP+si,M).
+xaber(_,NP+sf,M) --> "oub", reg(0+"Ã©",NP+sf,M).
 
 %________ver (0), prover (1)
 
 ver(_,s+1+pr,M) --> "ej", reg(0+"e",s+1+pr,M).
 ver(_,p+1+pr,M) --> reg(0+"e",p+1+pr,M).
-ver(_,s+P+pr,M) --> "ê",  de(s+P,M), { membro(P,[2,3]) }.
-ver(_,p+3+pr,M) --> "êe", de(p+3,M).
+ver(_,s+P+pr,M) --> "Ãª",  de(s+P,M), { membro(P,[2,3]) }.
+ver(_,p+3+pr,M) --> "Ãªe", de(p+3,M).
 ver(_,p+2+pr,M) --> "e", "de", s(M).
 
 ver(_,NP+sp,M) --> "ej", reg(0+"e",NP+sp,M).
@@ -735,9 +735,9 @@ querer(_,NP+p(_,I),M) --> "er", reg(0+"e",NP+p(_,I),M).
 querer(0,s+P+pp,M) --> "i", s(M), { membro(P,[1,3]) }.
 querer(0, NP+pp,M) --> "is", reg(0+"e",NP+pp,M), { membro(NP,[s+2,p+_]) }.
 
-querer(0,NP+pm,M) --> "is", reg(0+"é",NP+pm,M).
-querer(0,NP+si,M) --> "is", reg(0+"é",NP+si,M).
-querer(0,NP+sf,M) --> "is", reg(0+"é",NP+sf,M).
+querer(0,NP+pm,M) --> "is", reg(0+"Ã©",NP+pm,M).
+querer(0,NP+si,M) --> "is", reg(0+"Ã©",NP+si,M).
+querer(0,NP+sf,M) --> "is", reg(0+"Ã©",NP+sf,M).
 
 querer(1,NP+pp,M) --> "er", reg(0+"e",NP+pp,M).
 querer(1,NP+pm,M) --> "er", reg(0+"e",NP+pm,M).
@@ -759,12 +759,12 @@ poder(NP+g(I)  ,M) --> "od", reg(0+"e",NP+g(I),M).
 poder(NP+p(_,I),M) --> "od", reg(0+"e",NP+p(_,I),M).
 
 poder(s+1+pp,-) --> "ude".
-poder(s+3+pp,-) --> "ôde".
+poder(s+3+pp,-) --> "Ã´de".
 poder( NP+pp,M) --> "ud", reg(0+"e",NP+pp,M), { membro(NP,[s+2,p+_]) }.
 
-poder(NP+pm,M) --> "ud", reg(0+"é",NP+pm,M).
-poder(NP+si,M) --> "ud", reg(0+"é",NP+si,M).
-poder(NP+sf,M) --> "ud", reg(0+"é",NP+sf,M).
+poder(NP+pm,M) --> "ud", reg(0+"Ã©",NP+pm,M).
+poder(NP+si,M) --> "ud", reg(0+"Ã©",NP+si,M).
+poder(NP+sf,M) --> "ud", reg(0+"Ã©",NP+sf,M).
 
 %________aprazer/comprazer
 
@@ -784,9 +784,9 @@ aprazer(s+1+pp,-) --> "uv", "e".
 aprazer(s+3+pp,-) --> "ouv", "e".
 aprazer( NP+pp,M) --> "ouv", reg(0+"e",NP+pp,M), { membro(NP,[s+2,p+_]) }.
 
-aprazer(NP+pm,M) --> "ouv", reg(0+"é",NP+pm,M).
-aprazer(NP+si,M) --> "ouv", reg(0+"é",NP+si,M).
-aprazer(NP+sf,M) --> "ouv", reg(0+"é",NP+sf,M).
+aprazer(NP+pm,M) --> "ouv", reg(0+"Ã©",NP+pm,M).
+aprazer(NP+si,M) --> "ouv", reg(0+"Ã©",NP+si,M).
+aprazer(NP+sf,M) --> "ouv", reg(0+"Ã©",NP+sf,M).
 
 comprazer(I,M) --> "a", z(M), { I=s+3+pr }.
 comprazer(I,M) --> "az", reg(0+"e",I,M), { \+ membro(I,[s+3+pr,s+1+pr,_+sp]) }.
@@ -813,17 +813,17 @@ dizer(s+1+pp,-) --> "iss", "e".
 dizer(s+3+pp,-) --> "iss", "e".
 dizer( NP+pp,M) --> "iss", reg(0+"e",NP+pp,M), { membro(NP,[s+2,p+_]) }.
 
-dizer(NP+pm,M) --> "iss", reg(0+"é",NP+pm,M).
-dizer(NP+si,M) --> "iss", reg(0+"é",NP+si,M).
-dizer(NP+sf,M) --> "iss", reg(0+"é",NP+sf,M).
+dizer(NP+pm,M) --> "iss", reg(0+"Ã©",NP+pm,M).
+dizer(NP+si,M) --> "iss", reg(0+"Ã©",NP+si,M).
+dizer(NP+sf,M) --> "iss", reg(0+"Ã©",NP+sf,M).
 
 %________fazer
 
-fazer(s+1+pr,M) --> "aç", reg(0+"e",s+1+pr,M).
+fazer(s+1+pr,M) --> "aÃ§", reg(0+"e",s+1+pr,M).
 fazer(s+3+pr,M) --> a(a,M), z(M).
 fazer( NP+pr,M) --> "az", reg(0+"e",NP+pr,M), { membro(NP,[s+2,p+_]) }.
 
-fazer(NP+sp,M) --> "aç", reg(0+"e",NP+sp,M).
+fazer(NP+sp,M) --> "aÃ§", reg(0+"e",NP+sp,M).
 
 fazer(NP+pi  ,M) --> "az", reg(0+"e",NP+pi,M).
 fazer(NP+i(I),M) --> "az", reg(0+"e",NP+i(I),M).
@@ -839,9 +839,9 @@ fazer(s+1+pp,M) --> "i", z(M).
 fazer(s+3+pp,M) --> e(f,M), z(M).
 fazer( NP+pp,M) --> "iz", reg(0+"e",NP+pp,M), { membro(NP,[s+2,p+_]) }.
 
-fazer(NP+pm,M) --> "iz", reg(0+"é",NP+pm,M).
-fazer(NP+si,M) --> "iz", reg(0+"é",NP+si,M).
-fazer(NP+sf,M) --> "iz", reg(0+"é",NP+sf,M).
+fazer(NP+pm,M) --> "iz", reg(0+"Ã©",NP+pm,M).
+fazer(NP+si,M) --> "iz", reg(0+"Ã©",NP+si,M).
+fazer(NP+sf,M) --> "iz", reg(0+"Ã©",NP+sf,M).
 
 %________trazer
 
@@ -864,9 +864,9 @@ trazer(s+1+pp,-) --> "oux", "e".
 trazer(s+3+pp,-) --> "oux", "e".
 trazer( NP+pp,M) --> "oux", reg(0+"e",NP+pp,M), { membro(NP,[s+2,p+_]) }.
 
-trazer(NP+pm,M) --> "oux", reg(0+"é",NP+pm,M).
-trazer(NP+si,M) --> "oux", reg(0+"é",NP+si,M).
-trazer(NP+sf,M) --> "oux", reg(0+"é",NP+sf,M).
+trazer(NP+pm,M) --> "oux", reg(0+"Ã©",NP+pm,M).
+trazer(NP+si,M) --> "oux", reg(0+"Ã©",NP+si,M).
+trazer(NP+sf,M) --> "oux", reg(0+"Ã©",NP+sf,M).
 
 
 %__________________________fim de verbos.pl_______________________________

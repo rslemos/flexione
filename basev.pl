@@ -2,38 +2,38 @@
 %------------------------------------------------------------------------
 %
 %  Universidade Federal do Rio Grande do Sul
-%  Instituto de Informática Teórica
-%  Bacharelado em Ciências da Computação
+%  Instituto de InformÃ¡tica TeÃ³rica
+%  Bacharelado em CiÃªncias da ComputaÃ§Ã£o
 %  Aluno: Emiliano Gomes Padilha
 %
-%  Projeto de Graduação                 Semestre 93/2
-%  Título: Conjugação e Composição Verbal da Língua Portuguesa
-%  Área: Inteligência Artificial
-%  Campo: Processamento de Língua Natural
+%  Projeto de GraduaÃ§Ã£o                 Semestre 93/2
+%  TÃ­tulo: ConjugaÃ§Ã£o e ComposiÃ§Ã£o Verbal da LÃ­ngua Portuguesa
+%  Ãrea: InteligÃªncia Artificial
+%  Campo: Processamento de LÃ­ngua Natural
 %  Orientadora: Prof. Rosa Maria Viccari
 %
 %------------------------------------------------------------------------
 % Nota: este arquivo possui caracteres acentuados da tabela de caracteres
-% do SunOS. É importante que os acentos sejam visíveis, pois o programa de
+% do SunOS. Ã‰ importante que os acentos sejam visÃ­veis, pois o programa de
 % verbos gera palavras portuguesas (naturalmente) acentuadas. Corrija
-% através de um editor de textos (recurso de busca-e-troca) com os
+% atravÃ©s de um editor de textos (recurso de busca-e-troca) com os
 % caracteres da tabela do seu programa/sistema operacional.
-% Os caracteres acentuados utilizados aqui são:
-%            á  -  a com acento agudo
-%            é  -  e com acento agudo
-%            í  -  i com acento agudo
-%            ó  -  o com acento agudo
-%            ú  -  u com acento agudo
-%            ã  -  a com til
-%            õ  -  o com til
-%            â  -  a com acento circunflexo
-%            ê  -  e com acento circunflexo
-%            ô  -  o com acento circunflexo
-%            à  -  a com acento grave (crase)
-%            ü  -  u com trema
-%            ç  -  c cedilha
-%            Á  -  A com acento agudo
-%            É  -  E com acento agudo
+% Os caracteres acentuados utilizados aqui sÃ£o:
+%            Ã¡  -  a com acento agudo
+%            Ã©  -  e com acento agudo
+%            Ã­  -  i com acento agudo
+%            Ã³  -  o com acento agudo
+%            Ãº  -  u com acento agudo
+%            Ã£  -  a com til
+%            Ãµ  -  o com til
+%            Ã¢  -  a com acento circunflexo
+%            Ãª  -  e com acento circunflexo
+%            Ã´  -  o com acento circunflexo
+%            Ã   -  a com acento grave (crase)
+%            Ã¼  -  u com trema
+%            Ã§  -  c cedilha
+%            Ã  -  A com acento agudo
+%            Ã‰  -  E com acento agudo
 %--------------------------------------------------------------------------
 
 
@@ -42,14 +42,14 @@
   :- dynamic vrb_/5.    %
 
 
-%__________________Lista de verbos (definições léxicas)_________________
+%__________________Lista de verbos (definiÃ§Ãµes lÃ©xicas)_________________
 
 %________verbos totalmente regulares
 vrb(amar        ,I,M) -->  cjg("ama",I,M).
 vrb(andar       ,I,M) -->  cjg("anda",I,M).
 vrb(continuar   ,I,M) -->  cjg("continua",I,M).
 vrb(falar       ,I,M) -->  cjg("fala",I,M).
-vrb(mediar      ,I,M) -->  cjg("media",I,M). /*não é como ansiar??*/
+vrb(mediar      ,I,M) -->  cjg("media",I,M). /*nÃ£o Ã© como ansiar??*/
 vrb(rezar       ,I,M) -->  cjg("reza",I,M).
 vrb(tentar      ,I,M) -->  cjg("tenta",I,M).
 vrb(usar        ,I,M) -->  cjg("usa",I,M).
@@ -99,7 +99,7 @@ vrb(resistir    ,I,M) --> "re",         vrb_(sistir,I,M).
 % (assistir, consistir, persistir, subsistir, ...)
 vrb(instruir    ,I,M) --> "in",         vrb_(struir,I,M).
 vrb(obstruir    ,I,M) --> "ob",         vrb_(struir,I,M).
-% (construir e destruir têm alterações ortográficas específicas)
+% (construir e destruir tÃªm alteraÃ§Ãµes ortogrÃ¡ficas especÃ­ficas)
 
 
 
@@ -169,7 +169,7 @@ vrb(reler       ,I,M) --> "re",         vrb(ler,I,M).
 
 
 
-%________verbos com alterações ortográficas regulares
+%________verbos com alteraÃ§Ãµes ortogrÃ¡ficas regulares
 vrb(doer        ,I,M) -->  cjg("doe",I,M).
 vrb(moer        ,I,M) -->  cjg("moe",I,M).
 vrb(roer        ,I,M) -->  cjg("roe",I,M).
@@ -182,8 +182,8 @@ vrb(perdoar     ,I,M) --> "per",        vrb(doar,I,M).
 vrb(basear      ,I,M) -->  cjg("basea",I,M).
 vrb(golpear     ,I,M) -->  cjg("golpea",I,M).
 vrb(passear     ,I,M) -->  cjg("passea",I,M).
-vrb(estrear     ,I,M) -->  cjg("estréa",I,M).
-% formas rizotônicas acentuadas: indicar em cjg/5 (estrear)
+vrb(estrear     ,I,M) -->  cjg("estrÃ©a",I,M).
+% formas rizotÃ´nicas acentuadas: indicar em cjg/5 (estrear)
 
 vrb(cair        ,I,M) -->  cjg("cai",I,M).
 vrb(esvair      ,I,M) -->  cjg("esvai",I,M).
@@ -194,16 +194,16 @@ vrb(distrair    ,I,M) --> "dis",        vrb(trair,I,M).
 vrb(extrair     ,I,M) --> "ex",         vrb(trair,I,M).
 % (abstrair, contrair, retrair, subtrair, ...)
 
-vrb(averiguar   ,I,M) -->  cjg("averigúa",I,M).
-vrb(obliquar    ,I,M) -->  cjg("obliqúa",I,M).
-vrb(adequar     ,I,M) -->  cjg("adeqúa",I,M).
-% verbos quar/guar: formas rizotônicas acentuadas: "qúa"/"gúa"
-% senão deve-se colocar "qua"/"gua" (ver aguar/minguar)
+vrb(averiguar   ,I,M) -->  cjg("averigÃºa",I,M).
+vrb(obliquar    ,I,M) -->  cjg("obliqÃºa",I,M).
+vrb(adequar     ,I,M) -->  cjg("adeqÃºa",I,M).
+% verbos quar/guar: formas rizotÃ´nicas acentuadas: "qÃºa"/"gÃºa"
+% senÃ£o deve-se colocar "qua"/"gua" (ver aguar/minguar)
 
-vrb(arguir      ,I,M) -->  cjg("argúi",I,M).
+vrb(arguir      ,I,M) -->  cjg("argÃºi",I,M).
 vrb(redarguir   ,I,M) -->  cjg("redargui",I,M).
-% verbos qüir/güir: formas rizotônicas acentuadas: "qúi"/"gúi"
-% senão deve-se colocar "qüi"/"güi"
+% verbos qÃ¼ir/gÃ¼ir: formas rizotÃ´nicas acentuadas: "qÃºi"/"gÃºi"
+% senÃ£o deve-se colocar "qÃ¼i"/"gÃ¼i"
 
 vrb(ficar       ,I,M) -->  cjg("fica",I,M).
 vrb(pescar      ,I,M) -->  cjg("pesca",I,M).
@@ -214,10 +214,10 @@ vrb(explicar    ,I,M) --> "ex",         vrb_(plicar,I,M).
 vrb(implicar    ,I,M) --> "im",         vrb_(plicar,I,M).
 % (complicar, replicar, suplicar, ...)
 
-vrb(alcancar    ,I,M) -->  cjg("alcança",I,M).
-vrb(cacar       ,I,M) -->  cjg("caça",I,M).
-vrb(comecar     ,I,M) -->  cjg("começa",I,M).
-vrb(forcar      ,I,M) -->  cjg("força",I,M).
+vrb(alcancar    ,I,M) -->  cjg("alcanÃ§a",I,M).
+vrb(cacar       ,I,M) -->  cjg("caÃ§a",I,M).
+vrb(comecar     ,I,M) -->  cjg("comeÃ§a",I,M).
+vrb(forcar      ,I,M) -->  cjg("forÃ§a",I,M).
 
 vrb(conhecer    ,I,M) -->  cjg("conhece",I,M).
 vrb(crescer     ,I,M) -->  cjg("cresce",I,M).
@@ -265,7 +265,7 @@ vrb(traduzir    ,I,M) --> "tra",        vrb_(duzir,I,M).
 % (aduzir, deduzir, introduzir, reduzir, seduzir, ...)
 
 
-%________alterações ortográficas específicas de alguns verbos
+%________alteraÃ§Ãµes ortogrÃ¡ficas especÃ­ficas de alguns verbos
 vrb(ansiar      ,I,M) -->  cjg("ans/ia",I,M).
 vrb(incendiar   ,I,M) -->  cjg("incend/ia",I,M).
 vrb(odiar       ,I,M) -->  cjg("od/ia",I,M).
@@ -289,7 +289,7 @@ vrb(desimpedir  ,I,M) --> "des",        vrb(impedir,I,M).
 
 
 
-%________verbos com mutação vocálica
+%________verbos com mutaÃ§Ã£o vocÃ¡lica
 vrb(repetir     ,I,M) -->  cjg("rep^eti",I,M).
 vrb(seguir      ,I,M) -->  cjg("s^egui",I,M).
 vrb(sentir      ,I,M) -->  cjg("s^enti",I,M).
@@ -308,10 +308,10 @@ vrb(dormir      ,I,M) -->  cjg("d^ormi",I,M).
 vrb(engolir     ,I,M) -->  cjg("eng^oli",I,M).
 vrb(tossir      ,I,M) -->  cjg("t^ossi",I,M).
 
-vrb(agredir     ,I,M) -->  cjg("agr^ëdi" ,I,M).
-vrb(denegrir    ,I,M) -->  cjg("den^ëgri",I,M).
-vrb(prevenir    ,I,M) -->  cjg("prev^ëni",I,M).
-vrb_(gredir     ,I,M) -->  cjg("gr^ëdi",I,M).
+vrb(agredir     ,I,M) -->  cjg("agr^Ã«di" ,I,M).
+vrb(denegrir    ,I,M) -->  cjg("den^Ã«gri",I,M).
+vrb(prevenir    ,I,M) -->  cjg("prev^Ã«ni",I,M).
+vrb_(gredir     ,I,M) -->  cjg("gr^Ã«di",I,M).
 vrb(progredir   ,I,M) --> "pro",        vrb_(gredir,I,M).
 vrb(regredir    ,I,M) --> "re",         vrb_(gredir,I,M).
 vrb(transgredir ,I,M) --> "trans",      vrb_(gredir,I,M).
@@ -323,26 +323,26 @@ vrb(subir       ,I,M) -->  cjg("s^ubi",I,M).
 % (outros semelhantes: acudir, bulir, escapulir)
 
 
-%________verbos com acentuações no radical (nas formas rizotônicas)
-vrb(apoiar  ,I,M) -->  cjg("ap^óia",I,M).
-vrb(boiar   ,I,M) -->  cjg("b^óia",I,M).
+%________verbos com acentuaÃ§Ãµes no radical (nas formas rizotÃ´nicas)
+vrb(apoiar  ,I,M) -->  cjg("ap^Ã³ia",I,M).
+vrb(boiar   ,I,M) -->  cjg("b^Ã³ia",I,M).
 % (provavelmente todos terminados em ..oiar)
-vrb(reunir  ,I,M) -->  cjg("re^úni",I,M).
-vrb(proibir ,I,M) -->  cjg("pro^íbi",I,M).
-vrb(minguar ,I,M) -->  cjg("m^íngua",I,M).
-vrb(aguar   ,I,M) -->  cjg("^água",I,M).
+vrb(reunir  ,I,M) -->  cjg("re^Ãºni",I,M).
+vrb(proibir ,I,M) -->  cjg("pro^Ã­bi",I,M).
+vrb(minguar ,I,M) -->  cjg("m^Ã­ngua",I,M).
+vrb(aguar   ,I,M) -->  cjg("^Ã¡gua",I,M).
 vrb(desaguar,I,M) --> "des",            vrb(aguar,I,M).
 vrb(enxaguar,I,M) --> "enx",            vrb(aguar,I,M).
 
 
-%________particularidades de acentuação (casos únicos)
+%________particularidades de acentuaÃ§Ã£o (casos Ãºnicos)
 vrb(parar,I,M) --> "p", a(a,K), cjg("ra",I,M), { co(K,I,[s+3+pr]) }.
 vrb(pelar,I,M) --> "p", e(a,K), cjg("la",I,M), { co(K,I,[s+_+pr]) }.
 vrb(coar, I,M) --> "c", o(f,K), reg(1+"a",I,M), { co(K,I,[s+_+pr]) }.
 
 
 
-%________verbos com dois particípios (regular e irregular)
+%________verbos com dois particÃ­pios (regular e irregular)
 vrb(entregar    ,I,M) --> "entre",   cjg("ga"+"gue",I,M).
 vrb(aceitar     ,I,M) --> "acei",    cjg("ta"+"to",I,M).
 vrb(expressar   ,I,M) --> "expres",  cjg("sa"+"so",I,M).
@@ -374,7 +374,7 @@ vrb(omitir      ,I,M) --> "omi",     cjg("ti" +"sso",I,M).
 vrb(tingir      ,I,M) --> "tin",     cjg("gi" +"to",I,M).
 vrb(extinguir   ,I,M) --> "extin",   cjg("gui" +"to",I,M).
 vrb(distinguir  ,I,M) --> "distin",  cjg("gui" +"to",I,M).
-  %% distinguir ou distingüir ??
+  %% distinguir ou distingÃ¼ir ??
 
 vrb_(mergir     ,I,M) --> "mer",     cjg("ge" +"so",I,M).
 vrb_(primir     ,I,M) --> "pr",      cjg("imi"+"esso",I,M).
@@ -389,7 +389,7 @@ vrb(inserir     ,I,M) --> "ins",     cjg("^eri"+"erto",I,M).
 vrb(frigir      ,I,M) --> "fr",      cjg("^igi"+"ito",I,M).
 
 
-%________verbos apenas com particípio irregular
+%________verbos apenas com particÃ­pio irregular
 vrb(abrir       ,I,M) --> "ab",      cjg("ri"   -"erto",I,M).
 vrb(cobrir      ,I,M) --> "c",       cjg("^obri"-"oberto",I,M).
 vrb_(screver    ,I,M) --> "scr",     cjg("eve"  -"ito",I,M).
@@ -414,7 +414,7 @@ vrb(abolir   ,I,M) --> cjg("aboli",I,M),
                                   { \+ membro(I,[s+1+pr,_+sp]) }.
 vrb(competir ,I,M) --> cjg("competi",I,M),
                                   { \+ membro(I,[s+1+pr,_+sp]) }.
-vrb(delinquir,I,M) --> cjg("delinqüi",I,M),
+vrb(delinquir,I,M) --> cjg("delinqÃ¼i",I,M),
                                   { \+ membro(I,[s+1+pr,_+sp]) }.
 vrb(demolir  ,I,M) --> cjg("demoli",I,M),
                                   { \+ membro(I,[s+1+pr,_+sp]) }.
