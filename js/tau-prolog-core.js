@@ -1,1 +1,0 @@
-../tau-prolog/code/core/beta.js
