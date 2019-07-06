@@ -1,0 +1,19 @@
+{
+  "name": "flexione",
+  "version": "1.0.0",
+  "description": "Flexionador",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rslemos/flexione.git"
+  },
+  "author": "R. Lemos <rslemos@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rslemos/flexione/issues"
+  },
+  "homepage": "https://github.com/rslemos/flexione#readme"
+}
