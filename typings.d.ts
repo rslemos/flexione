@@ -1,4 +1,4 @@
-declare module "*.pl" {
+declare module "*.pro" {
   const value: string;
   export default value;
 }

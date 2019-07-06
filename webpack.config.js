@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  target: 'node',
   devtool: 'inline-source-map',
   entry: './src/index.ts',
   module: {
@@ -10,7 +11,7 @@ module.exports = {
          loader: 'ts-loader',
        },
        {
-         test: /\.pl$/,
+         test: /\.pro$/,
          loader: 'raw-loader',
        },
      ],
