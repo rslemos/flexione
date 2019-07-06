@@ -18,5 +18,8 @@
   "homepage": "https://github.com/rslemos/flexione#readme",
   "dependencies": {
     "tau-prolog": "^0.2.66"
+  },
+  "devDependencies": {
+    "webpack": "^4.35.2"
   }
 }
