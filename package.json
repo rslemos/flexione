@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rslemos/flexione/issues"
   },
-  "homepage": "https://github.com/rslemos/flexione#readme"
+  "homepage": "https://github.com/rslemos/flexione#readme",
+  "dependencies": {
+    "tau-prolog": "^0.2.66"
+  }
 }
