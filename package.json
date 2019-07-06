@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "raw-loader": "^3.0.0",
-    "webpack": "^4.35.2"
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5"
   }
 }
