@@ -7,6 +7,6 @@ console.log('prolog', flex);
 session.consult(flex);
 //session.query('horizontal(line(point(2,3),P)).');
 //session.query('crosswd(V1,V2,V3,H1,H2,H3).');
-session.query('add(succ(succ(succ(0))),succ(succ(0)),R).');
-//session.query('ass(0,1,P).');
+//session.query('add(succ(succ(succ(0))),succ(succ(0)),R).');
+session.query('s(X,[]).');
 session.answers(answer => console.log(pl.format_answer(answer)));
