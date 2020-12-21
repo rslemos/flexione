@@ -9,4 +9,4 @@ session.consult(flex);
 //session.query('crosswd(V1,V2,V3,H1,H2,H3).');
 //session.query('add(succ(succ(succ(0))),succ(succ(0)),R).');
 session.query('s(X,[]).');
-session.answers(answer => console.log(pl.format_answer(answer)));
+session.answers(answer => console.log(pl.format_answer(answer), answer));
